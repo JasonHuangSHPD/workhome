@@ -5,6 +5,10 @@ from pythoncode.calculator import Calculator
 class TestCalc:
     def setup_class(self):
         self.cal = Calculator()
+        print("开始计算")
+
+    def teardown_class(self):
+        print("计算结束")
 
     @pytest.mark.parametrize("a,b,expect", [(3, 5, 8), (-1, -2, -3), (100, 200, 300)], ids=["int", "minus", "bigint"])
     def test_add(self, a, b, expect):
@@ -21,3 +25,5 @@ class TestCalc:
     @pytest.mark.parametrize("a,b,expect", [(60, 5, 12), (-6, -5, 1.2), (500, 100, 5)], ids=["int", "minus", "bigint"])
     def test_div(self, a, b, expect):
         assert expect == self.cal.div(a, b)
+
+
